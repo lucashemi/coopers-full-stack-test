@@ -1,5 +1,5 @@
 
-<p align="center"> <img src="https://coopers.pro/assets/img/coopers-brand.png" alt="Marca da Coopers" /> </p> <p align="center"> <em>Fast, flexible, trustful.</em> </p>
+<p align="center"> <img src="https://coopers.digital/assets/img/coopers-brand.png" alt="Marca da Coopers" /> </p> <p align="center"> <em>Fast, flexible, trustful.</em> </p>
 
 # Avaliação Full Stack Developer
 
