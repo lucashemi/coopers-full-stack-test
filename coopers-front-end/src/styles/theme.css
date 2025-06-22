@@ -45,7 +45,7 @@
   --space-sm: 1rem; /* 16px */
   --space-md: 1.5rem; /* 24px */
   --space-lg: 2rem; /* 32px */
-  --space-xl: 3rem; /* 48px */
+  --space-xl: 3.375rem; /* 54px */
 
   /* Bordas */
   --border-radius-sm: 4px;
@@ -73,6 +73,7 @@
   --breakpoint-lg: 1024px; /* Desktop */
 
   /* Z-index */
+  --z-index-bg: -1;
   --z-index-low: 1;
   --z-index-normal: 10;
   --z-index-high: 100;

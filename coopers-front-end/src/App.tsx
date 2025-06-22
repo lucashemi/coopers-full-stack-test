@@ -20,6 +20,7 @@ function App() {
       )}
       <main>
         <Hero />
+        <h1 id="Todo-list-title">To-do-list title</h1>
       </main>
     </>
   );
