@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600&display=swap");
+
+:root {
+  /* Cor principal */
+  --primary: #4ac959;
+
+  /* Cores secundarias */
+  --black: #000;
+  --white: #fff;
+
+  /* Cores especificas */
+  --read-more: #42d76b;
+  --orange-table: #e88d39;
+  --delete-item: #999999;
+
+  /* Fontes */
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-soleil: "Soleil", sans-serif; /* Fonte paga */
+
+  /* Tamanhos de fonte */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-md: 1.125rem; /* 18px */
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-xl: 1.5rem; /* 24px */
+  --font-size-xxl: 2rem; /* 32px */
+  --font-size-xxxl: 3rem; /* 48px */
+
+  /* Peso de fonte */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+  --font-weight-extra-bold: 700;
+
+  /* Espaçamentos */
+  --space-xs: 0.5rem; /* 8px */
+  --space-sm: 1rem; /* 16px */
+  --space-md: 1.5rem; /* 24px */
+  --space-lg: 2rem; /* 32px */
+  --space-xl: 3rem; /* 48px */
+
+  /* Bordas */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* Sombras */
+  --box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --box-shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+  /* Altura das linhas */
+  --line-height-xs: 1.2;
+  --line-height-sm: 1.4;
+  --line-height-base: 1.5;
+  --line-height-lg: 1.6;
+  --line-height-xl: 1.8;
+
+  /* Breakpoints */
+  --breakpoint-sm: 320px; /* Celulares */
+  --breakpoint-md: 768px; /* Tablets */
+  --breakpoint-lg: 1024px; /* Desktop */
+
+  /* Z-index */
+  --z-index-low: 1;
+  --z-index-normal: 10;
+  --z-index-high: 100;
+  --z-index-modal: 1000;
+  --z-index-tooltip: 2000;
+}
