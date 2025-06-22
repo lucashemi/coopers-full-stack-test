@@ -43,6 +43,12 @@
     font-weight: var(--font-weight-bold);
   }
 
+  .leftSide button {
+    font-size: var(--font-size-xl);
+    height: 4rem;
+    width: 18.75rem;
+  }
+
   .rightSide {
     display: block;
   }

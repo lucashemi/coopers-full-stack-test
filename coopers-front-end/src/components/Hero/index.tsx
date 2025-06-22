@@ -11,7 +11,9 @@ export function Hero() {
         <div className={styles.leftSide}>
           <Heading hero title="Organize" subtitle="your daily jobs" />
           <p className={styles.description}>The only way to get things done</p>
-          <button>Go to To-do list</button>
+          <a href="#Todo-list-title">
+            <button>Go to To-do list</button>
+          </a>
         </div>
         <div className={styles.rightSide}>
           <div className={styles.fixedBg}></div>
