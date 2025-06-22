@@ -12,6 +12,8 @@
   --read-more: #42d76b;
   --orange-table: #e88d39;
   --delete-item: #999999;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --input-border: #959595;
 
   /* Fontes */
   --font-montserrat: "Montserrat", sans-serif;
@@ -44,7 +46,8 @@
   /* Bordas */
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
-  --border-radius-lg: 12px;
+  --border-radius-lg: 10px;
+  --border-radius-xl: 12px;
 
   /* Sombras */
   --box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);

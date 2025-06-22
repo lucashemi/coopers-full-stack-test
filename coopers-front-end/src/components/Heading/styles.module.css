@@ -1,0 +1,27 @@
+.title {
+  font-weight: var(--font-weight-extra-bold);
+  font-size: var(--font-size-xxl);
+  margin: var(--space-xs) 0;
+}
+
+.title span {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xl);
+  color: var(--primary);
+  display: block;
+}
+
+@media screen and (min-width: 1024px) {
+  .title {
+    font-weight: var(--font-weight-extra-bold);
+    font-size: var(--font-size-xxxl);
+    margin: initial;
+  }
+
+  .title span {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-xxl);
+    color: var(--primary);
+    display: block;
+  }
+}
