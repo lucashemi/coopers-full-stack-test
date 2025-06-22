@@ -1,0 +1,34 @@
+.header {
+  margin-top: var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoContainer {
+  max-width: 140px;
+}
+
+.header button {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-xxs);
+  padding: 0.5rem 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    margin-top: var(--space-xl);
+  }
+
+  .logoContainer {
+    max-width: initial;
+  }
+
+  .header button {
+    padding: 1rem 2.5rem;
+  }
+}

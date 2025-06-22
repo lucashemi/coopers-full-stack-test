@@ -61,3 +61,8 @@ video {
   height: auto;
   display: block;
 }
+
+button {
+  border: none;
+  cursor: pointer;
+}

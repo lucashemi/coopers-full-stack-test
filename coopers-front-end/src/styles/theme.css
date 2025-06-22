@@ -52,6 +52,7 @@
   --box-shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.2);
 
   /* Altura das linhas */
+  --line-height-xxs: 1;
   --line-height-xs: 1.2;
   --line-height-sm: 1.4;
   --line-height-base: 1.5;
