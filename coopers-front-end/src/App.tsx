@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Header } from "./components/Header";
 import { Modal } from "./components/Modal";
 import { SignIn } from "./components/SignIn";
+import { Hero } from "./components/Hero";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,6 +18,9 @@ function App() {
           <SignIn />
         </Modal>
       )}
+      <main>
+        <Hero />
+      </main>
     </>
   );
 }

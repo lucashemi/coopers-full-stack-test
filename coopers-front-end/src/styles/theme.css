@@ -20,6 +20,10 @@
   --font-poppins: "Poppins", sans-serif;
   --font-soleil: "Soleil", sans-serif; /* Fonte paga */
 
+  /* Heading font size */
+  --font-size-heading-hero: 5rem;
+  --font-size-heading-hero-subtitle: 3.75rem;
+
   /* Tamanhos de fonte */
   --font-size-xs: 0.75rem; /* 12px */
   --font-size-sm: 0.875rem; /* 14px */
@@ -55,6 +59,7 @@
   --box-shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.2);
 
   /* Altura das linhas */
+  --line-height-xxxs: 0.8;
   --line-height-xxs: 1;
   --line-height-xs: 1.2;
   --line-height-sm: 1.4;

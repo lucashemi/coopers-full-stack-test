@@ -50,17 +50,17 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .signInImage {
+  .imageContainer {
     display: block;
     max-width: 231px;
     max-height: 231px;
   }
 
-  .signInForm {
+  .form {
     max-width: 40%;
   }
 
-  .signInButton {
+  .button {
     margin-top: var(--space-lg);
     width: 80%;
   }

@@ -66,3 +66,9 @@ button {
   border: none;
   cursor: pointer;
 }
+
+@media screen and (min-width: 1024px) {
+  #root {
+    padding: 0 3rem;
+  }
+}

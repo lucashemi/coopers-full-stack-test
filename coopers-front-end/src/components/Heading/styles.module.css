@@ -24,4 +24,14 @@
     color: var(--primary);
     display: block;
   }
+
+  .hero {
+    font-size: var(--font-size-heading-hero);
+    line-height: var(--line-height-xxxs);
+  }
+
+  .hero span {
+    font-size: var(--font-size-heading-hero-subtitle);
+    line-height: 64px;
+  }
 }
