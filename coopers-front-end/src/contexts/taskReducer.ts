@@ -9,7 +9,7 @@ export function taskReducer(state: Task[], action: TaskActions): Task[] {
         name: action.payload.name,
         done: false,
       };
-      return [...state, newTask];
+      return [newTask, ...state];
     }
 
     case "TOGGLE_DONE":

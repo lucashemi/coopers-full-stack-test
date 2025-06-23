@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { ToDoItem } from "../ToDoItem";
 import { useTaskContext } from "../../contexts/useTaskContext";
 import type { CardNames } from "../../types/CardNames";
+import { useRef } from "react";
 
 type ToDoCardProps = {
   title: CardNames;
@@ -21,10 +22,22 @@ export function ToDoCard({
     : styles.card;
 
   const { tasks, dispatch } = useTaskContext();
+  const addTaskRef = useRef<HTMLInputElement>(null);
 
   const filteredTasks = donePhase
     ? tasks.filter((t) => t.done)
     : tasks.filter((t) => !t.done);
+
+  function handleAddTask(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const value = addTaskRef.current?.value.trim();
+    if (!value) return;
+
+    dispatch({ type: "ADD_TASK", payload: { name: value } });
+
+    addTaskRef.current!.value = "";
+  }
 
   function handleEraseAll() {
     dispatch({
@@ -32,12 +45,6 @@ export function ToDoCard({
       payload: { cardName: title },
     });
   }
-
-  /*
-    function handleAddTask(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-  }
-    */
   return (
     <div className={cardStyle}>
       <div>
@@ -46,16 +53,16 @@ export function ToDoCard({
           {description} <span>{descriptionSpan}</span>
         </p>
       </div>
-      {/*<form onSubmit={handleAddTask} className={styles.form}>
-        <input
-          type="text"
-          placeholder="Add new task"
-          className={styles.input}
-        />
-        <button type="submit" className={styles.addButton}>
-          +
-        </button>
-      </form>*/}
+      {!donePhase && (
+        <form onSubmit={handleAddTask} className={styles.form}>
+          <input
+            type="text"
+            placeholder="Add new task"
+            className={styles.input}
+            ref={addTaskRef}
+          />
+        </form>
+      )}
       <div>
         <ul className={styles.list}>
           {filteredTasks.map((task) => (
