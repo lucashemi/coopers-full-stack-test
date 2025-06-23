@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { Modal } from "./components/Modal";
 import { SignIn } from "./components/SignIn";
 import { Hero } from "./components/Hero";
+import { ToDoTitle } from "./components/ToDoTitle";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +21,7 @@ function App() {
       )}
       <main>
         <Hero />
-        <h1 id="Todo-list-title">To-do-list title</h1>
+        <ToDoTitle />
       </main>
     </>
   );

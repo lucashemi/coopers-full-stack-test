@@ -23,7 +23,7 @@
 }
 
 .scrollIcon {
-  margin: var(--space-xl) auto;
+  margin: var(--space-xl) auto 0 auto;
   width: fit-content;
 }
 
@@ -67,8 +67,8 @@
 @media screen and (min-width: 1240px) {
   .fixedBg {
     position: absolute;
-    top: 24px;
-    right: 6px;
+    top: -30px; /* espaçamento da margin top do header menos o excedente para dar 24px de distancia */
+    right: -26.5px; /* espaçamento lateral do #root menos o excedente para dar 6px de distancia */
     z-index: var(--z-index-bg);
     min-width: 640px;
     min-height: 734px;
