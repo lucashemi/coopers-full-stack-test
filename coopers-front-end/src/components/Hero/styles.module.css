@@ -27,7 +27,7 @@
   width: fit-content;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1240px) {
   .hero {
     text-align: initial;
   }
@@ -62,9 +62,7 @@
     max-width: 443px;
     max-height: 481px;
   }
-}
 
-@media screen and (min-width: 1240px) {
   .fixedBg {
     position: absolute;
     top: -30px; /* espaçamento da margin top do header menos o excedente para dar 24px de distancia */
