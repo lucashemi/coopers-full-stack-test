@@ -2,7 +2,7 @@
   border-top: 20px solid var(--orange-table);
   box-shadow: var(--box-shadow-lg);
   padding: var(--space-md); /* figma 23px */
-  max-width: 100%;
+  width: 100%;
   max-height: fit-content;
 }
 

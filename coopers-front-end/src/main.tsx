@@ -4,9 +4,12 @@ import App from "./App.tsx";
 
 import "./styles/global.css";
 import "./styles/theme.css";
+import { TaskProvider } from "./contexts/TaskContextProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <TaskProvider>
+      <App />
+    </TaskProvider>
   </StrictMode>
 );

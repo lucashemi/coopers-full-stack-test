@@ -1,13 +1,13 @@
 import styles from "./styles.module.css";
 import { ToDoItem } from "../ToDoItem";
-import type { Task } from "../../types/Task";
+import { useTaskContext } from "../../contexts/useTaskContext";
+import type { CardNames } from "../../types/CardNames";
 
 type ToDoCardProps = {
-  title: string;
+  title: CardNames;
   description: string;
   descriptionSpan: string | React.ReactNode;
   donePhase?: boolean;
-  tasks: Task[];
 };
 
 export function ToDoCard({
@@ -15,11 +15,24 @@ export function ToDoCard({
   description,
   descriptionSpan,
   donePhase = false,
-  tasks,
 }: ToDoCardProps) {
   const cardStyle = donePhase
     ? `${styles.card} ${styles.cardDone}`
     : styles.card;
+
+  const { tasks, dispatch } = useTaskContext();
+
+  const filteredTasks = donePhase
+    ? tasks.filter((t) => t.done)
+    : tasks.filter((t) => !t.done);
+
+  function handleEraseAll() {
+    dispatch({
+      type: "DELETE_ALL",
+      payload: { cardName: title },
+    });
+  }
+
   /*
     function handleAddTask(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,13 +58,24 @@ export function ToDoCard({
       </form>*/}
       <div>
         <ul className={styles.list}>
-          {tasks.map((task) => (
-            <ToDoItem key={task.id} name={task.name} done={task.done} />
+          {filteredTasks.map((task) => (
+            <ToDoItem
+              key={task.id}
+              id={task.id}
+              name={task.name}
+              done={task.done}
+            />
           ))}
         </ul>
       </div>
       <div>
-        <button className={styles.eraseAllButton}>erase all</button>
+        <button
+          type="button"
+          onClick={handleEraseAll}
+          className={styles.eraseAllButton}
+        >
+          erase all
+        </button>
       </div>
     </div>
   );
