@@ -21,8 +21,8 @@
   --font-soleil: "Soleil", sans-serif; /* Fonte paga */
 
   /* Heading font size */
-  --font-size-heading-hero: 5rem;
-  --font-size-heading-hero-subtitle: 3.75rem;
+  --font-size-heading: 5rem; /* 80px */
+  --font-size-heading-subtitle: 3.75rem; /* 60px */
 
   /* Tamanhos de fonte */
   --font-size-xs: 0.75rem; /* 12px */
@@ -73,6 +73,7 @@
   --breakpoint-lg: 1024px; /* Desktop */
 
   /* Z-index */
+  --z-index-bg-2: -10;
   --z-index-bg: -1;
   --z-index-low: 1;
   --z-index-normal: 10;

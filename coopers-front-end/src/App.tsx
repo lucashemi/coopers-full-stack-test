@@ -12,7 +12,7 @@ function App() {
   const onCloseModal = () => setIsModalOpen(false);
 
   return (
-    <>
+    <div className="container">
       <Header handleOpenModal={onOpenModal} />
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={onCloseModal}>
@@ -23,7 +23,7 @@ function App() {
         <Hero />
         <ToDoTitle />
       </main>
-    </>
+    </div>
   );
 }
 

@@ -68,10 +68,10 @@
   .fixedBg {
     position: absolute;
     top: -30px; /* espaçamento da margin top do header menos o excedente para dar 24px de distancia */
-    right: -26.5px; /* espaçamento lateral do #root menos o excedente para dar 6px de distancia */
+    right: 0px;
     z-index: var(--z-index-bg);
     min-width: 640px;
-    min-height: 734px;
+    min-height: 740px;
     background: url("../../assets/graphics/coopers-bg.svg") no-repeat top center;
     background-size: cover;
   }

@@ -27,14 +27,16 @@ body {
 }
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 16px;
+  max-width: 1440px;
   position: relative;
+  margin: 0 auto;
 }
 
-main {
-  display: block;
+.container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 h1 {
@@ -70,6 +72,6 @@ button {
 
 @media screen and (min-width: 1024px) {
   #root {
-    padding: 0 3rem;
+    padding: 0 4rem;
   }
 }
