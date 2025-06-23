@@ -1,0 +1,15 @@
+.cardContainer {
+  margin-top: var(--space-lg); /* figma 44px */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-md);
+  text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .cardContainer {
+    flex-direction: row;
+    gap: 41px;
+  }
+}

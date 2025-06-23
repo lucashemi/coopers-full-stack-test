@@ -1,0 +1,61 @@
+.card {
+  border-top: 20px solid var(--orange-table);
+  box-shadow: var(--box-shadow-lg);
+  padding: var(--space-md); /* figma 23px */
+  max-width: 100%;
+  max-height: fit-content;
+}
+
+.cardDone {
+  border-color: var(--primary);
+}
+
+.title {
+  margin-top: var(--space-smd);
+  margin-bottom: var(--space-xxs);
+  font-family: var(--font-poppins);
+  font-weight: var(--font-weight-bold);
+  font-size: 40px; /* ajustar tema */
+  line-height: 24px;
+}
+
+.description {
+  margin-top: 20px; /* figma 20px */
+  margin-bottom: 30px;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xl);
+  line-height: 24px;
+}
+
+.description span {
+  display: block;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.eraseAllButton {
+  margin-top: var(--space-md);
+  background-color: var(--black);
+  color: var(--white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xxs);
+  border-radius: var(--border-radius-lg);
+  padding: 1rem 2rem;
+  width: 100%; /* figma 300px width e 64px height */
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    max-width: 380px;
+  }
+
+  .eraseAllButton {
+    max-width: 300px;
+  }
+}

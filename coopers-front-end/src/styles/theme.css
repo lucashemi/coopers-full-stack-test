@@ -9,11 +9,13 @@
   --white: #fff;
 
   /* Cores especificas */
-  --read-more: #42d76b;
-  --orange-table: #e88d39;
-  --delete-item: #999999;
   --overlay: rgba(0, 0, 0, 0.5);
   --input-border: #959595;
+  --orange-table: #e88d39;
+  --table-circle-hover: #a1a1a1;
+  --table-editing: #e38d3f;
+  --delete-item: #999999;
+  --read-more: #42d76b;
 
   /* Fontes */
   --font-montserrat: "Montserrat", sans-serif;
@@ -41,8 +43,10 @@
   --font-weight-extra-bold: 700;
 
   /* Espaçamentos */
+  --space-xxs: 0.25rem; /* 4px */
   --space-xs: 0.5rem; /* 8px */
   --space-sm: 1rem; /* 16px */
+  --space-smd: 1.25rem; /* 20px */
   --space-md: 1.5rem; /* 24px */
   --space-lg: 2rem; /* 32px */
   --space-xl: 3.375rem; /* 54px */

@@ -1,0 +1,84 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.itemContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  line-height: var(--line-height-xxs);
+  text-align: left;
+}
+
+.iconCircle {
+  width: 24px;
+  height: 24px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.iconCircleTodo {
+  border-color: var(--orange-table);
+}
+
+.iconCircleTodo:hover {
+  border-color: var(--table-circle-hover);
+}
+
+.iconCircleDone {
+  border-color: var(--primary); /* ou none */
+}
+
+.iconCircle .check {
+  opacity: 0;
+  transition: 0.2 ease;
+}
+
+.iconCircle:hover .check {
+  width: 12px;
+  height: 8px;
+  opacity: 1;
+}
+
+.editing {
+  color: var(--table-editing);
+  border: none;
+  width: 100%;
+}
+
+.deleteButton {
+  background-color: transparent;
+  padding: 0;
+  margin-right: 14px;
+  font-weight: var(--font-weight-extra-bold);
+  font-size: var(--font-size-xs);
+  line-height: 24px;
+  color: var(--delete-item);
+  opacity: 0;
+  transition: 0.2 ease;
+}
+
+.item:hover .deleteButton {
+  opacity: 1;
+}
+
+/* Mostrar no hover em desktop */
+@media (hover: hover) and (pointer: fine) {
+  .item:hover .deleteButton {
+    opacity: 1;
+  }
+}
+
+/* Mostrar sempre no mobile */
+@media (hover: none) and (pointer: coarse) {
+  .deleteButton {
+    opacity: 1;
+  }
+}

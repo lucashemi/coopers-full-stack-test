@@ -4,6 +4,7 @@ import { Modal } from "./components/Modal";
 import { SignIn } from "./components/SignIn";
 import { Hero } from "./components/Hero";
 import { ToDoTitle } from "./components/ToDoTitle";
+import { ToDoContent } from "./components/ToDoContent";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +23,7 @@ function App() {
       <main>
         <Hero />
         <ToDoTitle />
+        <ToDoContent />
       </main>
     </div>
   );
