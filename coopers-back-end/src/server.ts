@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes";
 import taskRoutes from "./routes/taskRoutes";
+import emailRouters from "./routes/emailRoutes";
 import knex from "./config/knexfile";
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use("/auth", authRoutes);
 app.use("/api", taskRoutes);
+app.use("/email", emailRouters);
 
 // Função para rodar as migrations automaticamente
 const runMigrations = async () => {
