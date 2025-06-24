@@ -3,14 +3,20 @@ import check from "../../assets/icons/icon-check.svg";
 import doneCheck from "../../assets/icons/icon-check-done.svg";
 import { useTaskContext } from "../../contexts/useTaskContext";
 import { EditableText } from "../EditableText";
+import { forwardRef } from "react";
+import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
 
 type ToDoItemProps = {
   id: number;
   name: string;
   done?: boolean;
+  dragHandleProps: SyntheticListenerMap | undefined;
 };
 
-export function ToDoItem({ id, name, done = false }: ToDoItemProps) {
+export const ToDoItem = forwardRef(function ToDoItem(
+  { id, name, done = false, dragHandleProps, ...rest }: ToDoItemProps,
+  ref: React.Ref<HTMLLIElement>
+) {
   const { dispatch } = useTaskContext();
 
   const iconCircleStyle = done
@@ -39,8 +45,15 @@ export function ToDoItem({ id, name, done = false }: ToDoItemProps) {
   }
 
   return (
-    <li className={styles.item}>
+    <li ref={ref} className={styles.item} {...rest}>
       <div className={styles.itemContent}>
+        <button
+          {...dragHandleProps}
+          className={styles.dragHandle}
+          role="button"
+        >
+          ≡
+        </button>
         <span onClick={handleClickDone} className={iconCircleStyle}>
           {!done ? (
             <img src={check} alt="Check" className={styles.check} />
@@ -60,4 +73,4 @@ export function ToDoItem({ id, name, done = false }: ToDoItemProps) {
       </button>
     </li>
   );
-}
+});

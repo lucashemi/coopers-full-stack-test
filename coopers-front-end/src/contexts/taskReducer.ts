@@ -1,5 +1,5 @@
 import type { Task } from "../types/Task";
-import type { TaskActions } from "../types/taskActions";
+import type { TaskActions } from "../types/TaskActions";
 
 export function taskReducer(state: Task[], action: TaskActions): Task[] {
   switch (action.type) {
@@ -40,8 +40,22 @@ export function taskReducer(state: Task[], action: TaskActions): Task[] {
       }
     }
 
-    case "REORDER_TASKS":
-      return action.payload.tasks;
+    case "REORDER_TASKS": {
+      const { cardName, newOrder } = action.payload;
+
+      const cardNewOrder = newOrder
+        .map((id) => state.find((task) => task.id === id))
+        .filter((task): task is Task => Boolean(task));
+
+      switch (cardName) {
+        case "To-do":
+          return [...cardNewOrder, ...state.filter((task) => task.done)];
+        case "Done":
+          return [...state.filter((task) => !task.done), ...cardNewOrder];
+        default:
+          return state;
+      }
+    }
 
     case "SET_TASKS":
       return action.payload.tasks;

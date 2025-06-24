@@ -82,3 +82,11 @@
     opacity: 1;
   }
 }
+
+.dragHandle {
+  cursor: grab;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  padding: 0 0.5rem;
+}
