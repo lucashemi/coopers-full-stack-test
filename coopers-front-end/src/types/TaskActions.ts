@@ -7,8 +7,4 @@ export type TaskActions =
   | { type: "EDIT_TASK"; payload: { id: number; name: string } }
   | { type: "DELETE_TASK"; payload: { id: number } }
   | { type: "DELETE_ALL"; payload: { cardName: CardNames } }
-  | {
-      type: "REORDER_TASKS";
-      payload: { cardName: CardNames; newOrder: number[] };
-    }
   | { type: "SET_TASKS"; payload: { tasks: Task[] } };

@@ -11,6 +11,7 @@ type ToDoItemProps = {
   name: string;
   done?: boolean;
   dragHandleProps: SyntheticListenerMap | undefined;
+  style: React.CSSProperties;
 };
 
 export const ToDoItem = forwardRef(function ToDoItem(

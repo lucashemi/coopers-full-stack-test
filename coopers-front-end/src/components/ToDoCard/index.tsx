@@ -2,13 +2,12 @@ import styles from "./styles.module.css";
 import { useTaskContext } from "../../contexts/useTaskContext";
 import type { CardNames } from "../../types/CardNames";
 import { useRef } from "react";
-import { useDndSortable } from "../../hooks/useDndSortable";
-import type { Task } from "../../types/Task";
 import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { SortableTask } from "../SortableTask";
+import { DroppableColumn } from "../DroppableColumn";
 
 type ToDoCardProps = {
   title: CardNames;
@@ -30,9 +29,7 @@ export function ToDoCard({
   const { tasks, dispatch } = useTaskContext();
   const addTaskRef = useRef<HTMLInputElement>(null);
 
-  const filteredTasks = donePhase
-    ? tasks.filter((t) => t.done)
-    : tasks.filter((t) => !t.done);
+  const cardTasks = tasks.filter((t) => t.done === donePhase);
 
   function handleAddTask(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -51,15 +48,6 @@ export function ToDoCard({
       payload: { cardName: title },
     });
   }
-
-  const onReorder = (newOrder: Task[]) => {
-    dispatch({
-      type: "REORDER_TASKS",
-      payload: { cardName: title, newOrder: newOrder.map((t) => t.id) },
-    });
-  };
-
-  const { DndWrapper } = useDndSortable({ tasks: filteredTasks, onReorder });
 
   return (
     <div className={cardStyle}>
@@ -80,18 +68,18 @@ export function ToDoCard({
         </form>
       )}
       <div>
-        <DndWrapper>
+        <DroppableColumn id={donePhase ? "Done" : "To-do"}>
           <SortableContext
-            items={filteredTasks.map((t) => t.id)}
+            items={cardTasks.map((t) => t.id)}
             strategy={verticalListSortingStrategy}
           >
             <ul className={styles.list}>
-              {filteredTasks.map((task) => (
+              {cardTasks.map((task) => (
                 <SortableTask key={task.id} task={task} />
               ))}
             </ul>
           </SortableContext>
-        </DndWrapper>
+        </DroppableColumn>
       </div>
       <div>
         <button

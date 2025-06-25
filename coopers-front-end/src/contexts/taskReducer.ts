@@ -1,3 +1,4 @@
+import { TOP_OF_LIST_POSITION } from "../constants/taskConstants";
 import type { Task } from "../types/Task";
 import type { TaskActions } from "../types/TaskActions";
 
@@ -8,13 +9,16 @@ export function taskReducer(state: Task[], action: TaskActions): Task[] {
         id: Date.now(),
         name: action.payload.name,
         done: false,
+        position: TOP_OF_LIST_POSITION,
       };
       return [newTask, ...state];
     }
 
     case "TOGGLE_DONE":
       return state.map((task) =>
-        task.id === action.payload.id ? { ...task, done: !task.done } : task
+        task.id === action.payload.id
+          ? { ...task, done: !task.done, position: TOP_OF_LIST_POSITION }
+          : task
       );
 
     case "EDIT_TASK":
@@ -37,23 +41,6 @@ export function taskReducer(state: Task[], action: TaskActions): Task[] {
           return state.filter((task) => !task.done);
         default:
           return [];
-      }
-    }
-
-    case "REORDER_TASKS": {
-      const { cardName, newOrder } = action.payload;
-
-      const cardNewOrder = newOrder
-        .map((id) => state.find((task) => task.id === id))
-        .filter((task): task is Task => Boolean(task));
-
-      switch (cardName) {
-        case "To-do":
-          return [...cardNewOrder, ...state.filter((task) => task.done)];
-        case "Done":
-          return [...state.filter((task) => !task.done), ...cardNewOrder];
-        default:
-          return state;
       }
     }
 
