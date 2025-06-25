@@ -3,15 +3,15 @@ import knex from "../config/knexfile";
 import { sendEmail } from "../services/email/sendEmail";
 
 export const sendEmailController = async (req: Request, res: Response) => {
-  const name = req.body.name ?? "Anonymous";
-  const { email, telephone, message } = req.body;
-
-  if (!email || !telephone || !message) {
-    res.status(400).json({ error: "Fill all the necessary fields." });
-    return;
-  }
-
   try {
+    const name = req.body.name ?? "Anonymous";
+    const { email, telephone, message } = req.body;
+
+    if (!email || !telephone || !message) {
+      res.status(400).json({ error: "Fill all the necessary fields." });
+      return;
+    }
+
     // Saving on the database
     await knex("contacts").insert({
       name,

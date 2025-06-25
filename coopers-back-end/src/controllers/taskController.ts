@@ -7,14 +7,24 @@ import { deleteTaskById } from "../services/task/deleteTaskService";
 
 // Get all tasks
 export const getTasks = async (req: Request, res: Response) => {
-  const userId = req.user?.id;
+  try {
+    const userId = req.user?.id;
 
-  const tasks = await knex("tasks")
-    .where({ user_id: userId })
-    .orderBy("position", "asc");
+    const tasks = await knex("tasks")
+      .where({ user_id: userId })
+      .orderBy([
+        { column: "done", order: "asc" },
+        { column: "position", order: "asc" },
+      ])
+      .select("id", "name", "done", "position");
 
-  res.json(tasks);
-  return;
+    res.json(tasks);
+    return;
+  } catch (err) {
+    console.error("Error on get tasks:", err);
+    res.status(500).json({ error: "Error on get tasks" });
+    return;
+  }
 };
 
 // Add a new task
@@ -42,15 +52,16 @@ export const addTask = async (req: Request, res: Response) => {
   } catch (err) {
     console.error("Error on create task:", err);
     res.status(500).json({ error: "Error on create task" });
+    return;
   }
 };
 
 // Update a task
 export const updateTask = async (req: Request, res: Response) => {
-  const taskId = parseInt(req.params.taskId);
-  const { name, done } = req.body;
-
   try {
+    const taskId = parseInt(req.params.taskId);
+    const { name, done } = req.body;
+
     const updatedTaskData = await updateTaskService(taskId, {
       name,
       done,
@@ -67,72 +78,106 @@ export const updateTask = async (req: Request, res: Response) => {
 
 // Delete a task
 export const deleteTask = async (req: Request, res: Response) => {
-  const taskId = parseInt(req.params.taskId);
-  const userId = req.user?.id;
+  try {
+    const taskId = parseInt(req.params.taskId);
+    const userId = req.user?.id;
 
-  await deleteTaskById(taskId, userId!);
+    await deleteTaskById(taskId, userId!);
 
-  res.json({ message: "Task deleted successfully" });
-  return;
+    res.json({ message: "Task deleted successfully" });
+    return;
+  } catch (err) {
+    console.error("Error on delete task:", err);
+    res.status(500).json({ error: "Error on delete task" });
+    return;
+  }
 };
 
 // Delete all tasks
 export const deleteAllTasks = async (req: Request, res: Response) => {
-  const done = String(req.query.done) === "true";
-  const userId = req.user?.id;
+  try {
+    const done = String(req.query.done) === "true";
+    const userId = req.user?.id;
 
-  // Delete all tasks if doesnt have a parameter
-  if (done === undefined) {
-    await knex("tasks").where({ user_id: userId }).del();
-    res.json({ message: "All tasks deleted" });
+    // Delete all tasks if doesnt have a parameter
+    if (done === undefined) {
+      await knex("tasks").where({ user_id: userId }).del();
+      res.json({ message: "All tasks deleted" });
+      return;
+    }
+
+    // Delete all tasks by status
+    await knex("tasks").where({ done, user_id: req.user?.id }).del();
+
+    const status = done ? "done" : "to-do";
+
+    res.json({ message: `All ${status} tasks deleted` });
+    return;
+  } catch (err) {
+    console.error("Error on delete all tasks:", err);
+    res.status(500).json({ error: "Error on delete all tasks" });
     return;
   }
-
-  // Delete all tasks by status
-  await knex("tasks").where({ done, user_id: req.user?.id }).del();
-
-  const status = done ? "done" : "to-do";
-
-  res.json({ message: `All ${status} tasks deleted` });
-  return;
 };
 
 // Reorder tasks in bulk (drag-and-drop)
 export const reorderTasks = async (req: Request, res: Response) => {
-  const newOrder = req.body.newOrder;
-  const done = String(req.body.done) === "true";
-
-  if (!Array.isArray(newOrder)) {
-    res.status(400).json({ error: "The body should be an array of tasks" });
-    return;
-  }
-
-  const trx = await knex.transaction();
+  const newOrder = req.body;
+  const userId = req.user?.id;
 
   try {
+    if (!Array.isArray(newOrder)) {
+      res.status(400).json({ error: "The body should be an array of tasks" });
+      return;
+    }
+
+    // Initiate transaction
+    const trx = await knex.transaction();
+
+    // Validate input and update tasks positions, if error inside the transaction, rollback
     for (const task of newOrder) {
-      // Validate input
-      if (typeof task.id !== "number" || typeof task.position !== "number") {
+      try {
+        if (
+          typeof task.id !== "number" ||
+          typeof task.position !== "number" ||
+          typeof !!task.done !== "boolean"
+        ) {
+          await trx.rollback();
+          res.status(400).json({
+            error:
+              "Each task should have an id(number), a position(number) and a done(boolean) property",
+          });
+          return;
+        }
+
+        // Update the position of the task inside the transaction
+        await trx("tasks")
+          .where({ id: task.id })
+          .andWhere({ user_id: userId })
+          .update({ position: task.position, done: task.done });
+      } catch (err) {
         await trx.rollback();
-        res.status(400).json({
-          error: "Each task should have an id(number) and a position(number)",
-        });
+        console.error("Error updating reordered task:", err);
+        res
+          .status(500)
+          .json({ error: "Internal error updating reordered task" });
         return;
       }
-
-      // Update task position
-      await trx("tasks")
-        .where({ id: task.id })
-        .andWhere("done", done)
-        .update({ position: task.position });
     }
 
     await trx.commit();
 
-    res.status(200).json({ message: "Tasks re-ordered successfully" });
+    const tasks = await knex("tasks")
+      .where({ user_id: userId })
+      .orderBy([
+        { column: "done", order: "asc" },
+        { column: "position", order: "asc" },
+      ])
+      .select("id", "name", "done", "position");
+
+    res.status(200).json(tasks);
     return;
   } catch (err) {
-    await trx.rollback();
     console.error("Error reordering tasks:", err);
     res.status(500).json({ error: "Internal error reordering tasks" });
     return;
