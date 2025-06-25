@@ -28,7 +28,7 @@ export const addTask = async (req: Request, res: Response) => {
   }
 
   try {
-    pushTasksDown(userId!, false);
+    await pushTasksDown(userId!, false);
 
     const [newTaskId] = await knex("tasks").insert({
       name,
@@ -61,6 +61,7 @@ export const updateTask = async (req: Request, res: Response) => {
   } catch (err: any) {
     console.error("Error on update task:", err);
     res.status(500).json({ error: err.message ?? "Error on update task" });
+    return;
   }
 };
 

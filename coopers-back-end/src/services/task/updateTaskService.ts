@@ -27,10 +27,10 @@ export async function updateTaskService(
     finalUpdates.position = TOP_OF_LIST_POSITION;
 
     // Pull previous list tasks
-    pullTasksUp(task.user_id, !done, task.position);
+    await pullTasksUp(task.user_id, !done, task.position);
 
     // Push new list tasks
-    pushTasksDown(task.user_id, done);
+    await pushTasksDown(task.user_id, done);
   }
 
   await knex("tasks").where({ id: taskId }).update(finalUpdates);
