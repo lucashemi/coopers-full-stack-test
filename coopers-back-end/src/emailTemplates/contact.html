@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Message</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f5f7fa;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: #000;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+      }
+
+      .header {
+        background-color: #4ac959;
+        padding: 30px;
+        color: white;
+        text-align: center;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      .content p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 16px;
+      }
+
+      .content strong {
+        color: #4ac959;
+      }
+
+      .message-box {
+        background-color: #f4f4f4;
+        border-left: 5px solid #4ac959;
+        padding: 15px;
+        margin-top: 10px;
+        font-style: italic;
+        white-space: pre-wrap;
+      }
+
+      .footer {
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 20px;
+        font-size: 12px;
+        color: #555;
+      }
+
+      @media (max-width: 600px) {
+        .content,
+        .header,
+        .footer {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>New Message Received</h1>
+      </div>
+      <div class="content">
+        <p><strong>Name:</strong> {{name}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Phone:</strong> {{telephone}}</p>
+        <p><strong>Message:</strong></p>
+        <div class="message-box">{{message}}</div>
+      </div>
+      <div class="footer">© 2021 Coopers. All rights reserved.</div>
+    </div>
+  </body>
+</html>

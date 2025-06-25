@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { Contact } from "../../models/Contact";
+import { loadAndFillTemplate } from "../../utils/emailUtils";
 
 export async function sendEmail({ name, email, telephone, message }: Contact) {
   const transporter = nodemailer.createTransport({
@@ -10,18 +11,18 @@ export async function sendEmail({ name, email, telephone, message }: Contact) {
     },
   });
 
+  const html = loadAndFillTemplate("contact.html", {
+    name,
+    email,
+    telephone,
+    message,
+  });
+
   const mailOptions = {
     from: `"${name}" <${process.env.GMAIL_USER}>`,
     to: email,
     subject: "Formulário de Contato Coopers",
-    html: `
-      <h2>New message received</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Telephone:</strong> ${telephone}</p>
-      <p><strong>Message:</strong></p>
-      <p>${message}</p>
-    `,
+    html,
   };
 
   try {
