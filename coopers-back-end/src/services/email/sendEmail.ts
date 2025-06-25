@@ -19,7 +19,7 @@ export async function sendEmail({ name, email, telephone, message }: Contact) {
   });
 
   const mailOptions = {
-    from: `"${name}" <${process.env.GMAIL_USER}>`,
+    from: `"Coopers" <${process.env.GMAIL_USER}>`,
     to: email,
     subject: "Formulário de Contato Coopers",
     html,
