@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import { useTaskContext } from "../../contexts/useTaskContext";
+import { useTaskContext } from "../../contexts/task/useTaskContext";
 import type { CardNames } from "../../types/CardNames";
 import { useRef } from "react";
 import {

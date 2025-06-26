@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import { taskReducer } from "./taskReducer";
 import { TaskContext } from "./TaskContext";
-import { defaultTasks } from "../constants/defaultTasks";
+import { defaultTasks } from "../../constants/defaultTasks";
 
 interface TaskProviderProps {
   children: React.ReactNode;

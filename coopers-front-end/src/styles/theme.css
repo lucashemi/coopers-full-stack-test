@@ -16,6 +16,8 @@
   --table-editing: #e38d3f;
   --delete-item: #999999;
   --read-more: #42d76b;
+  --error: #ff0000;
+  --switch: #2563eb;
 
   /* Fontes */
   --font-montserrat: "Montserrat", sans-serif;

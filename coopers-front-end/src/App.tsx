@@ -5,21 +5,29 @@ import { SignIn } from "./components/SignIn";
 import { Hero } from "./components/Hero";
 import { ToDoTitle } from "./components/ToDoTitle";
 import { ToDoContent } from "./components/ToDoContent";
+import { SignUp } from "./components/SignUp";
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const onOpenModal = () => setIsModalOpen(true);
-  const onCloseModal = () => setIsModalOpen(false);
+  const [authMode, setAuthMode] = useState<"signIn" | "signUp" | null>(null);
 
   return (
     <div className="container">
-      <Header handleOpenModal={onOpenModal} />
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={onCloseModal}>
-          <SignIn />
-        </Modal>
-      )}
+      <Header handleOpenModal={() => setAuthMode("signIn")} />
+      <Modal isOpen={!!authMode} onClose={() => setAuthMode(null)}>
+        {authMode === "signIn" ? (
+          <SignIn
+            onClose={() => setAuthMode(null)}
+            onSwitch={() => setAuthMode("signUp")}
+          />
+        ) : (
+          authMode === "signUp" && (
+            <SignUp
+              onClose={() => setAuthMode(null)}
+              onSwitch={() => setAuthMode("signIn")}
+            />
+          )
+        )}
+      </Modal>
       <main>
         <Hero />
         <ToDoTitle />

@@ -10,8 +10,8 @@ type SignInProps = {
   onSwitch: () => void;
 };
 
-export function SignIn({ onClose, onSwitch }: SignInProps) {
-  const { login, loading, error } = useAuth();
+export function SignUp({ onClose, onSwitch }: SignInProps) {
+  const { register, loading, error } = useAuth();
   const usernameInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const [localError, setLocalError] = useState<string | null>(null);
@@ -23,7 +23,7 @@ export function SignIn({ onClose, onSwitch }: SignInProps) {
     }
   }, []);
 
-  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+  async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const name = usernameInputRef.current?.value.trim();
@@ -37,7 +37,7 @@ export function SignIn({ onClose, onSwitch }: SignInProps) {
     setLocalError(null);
 
     try {
-      await login(name, password);
+      await register(name, password);
       onClose();
     } catch {
       return;
@@ -50,9 +50,9 @@ export function SignIn({ onClose, onSwitch }: SignInProps) {
         <div className={styles.imageContainer}>
           <img src={signinImage} alt="Person signing in" />
         </div>
-        <Heading title="Sign in" subtitle="to access your list" />
+        <Heading title="Sign up" subtitle="to have your own list" />
       </div>
-      <form action="" className={styles.form} onSubmit={handleLogin}>
+      <form action="" className={styles.form} onSubmit={handleRegister}>
         <div className={styles.formRow}>
           <label htmlFor="user">User:</label>
           <input type="text" id="user" ref={usernameInputRef} />
@@ -62,13 +62,13 @@ export function SignIn({ onClose, onSwitch }: SignInProps) {
           <input type="password" id="password" ref={passwordInputRef} />
         </div>
         <button onClick={onSwitch} className={styles.switch}>
-          Don't have an account? Sign up
+          Already have an account ? Sign in
         </button>
         {(error || localError) && (
           <span className={styles.error}>{error || localError}</span>
         )}
         <button type="submit" className={styles.button}>
-          {loading ? "Loading..." : "Sign in"}
+          {loading ? "Loading..." : "Sign up"}
         </button>
       </form>
     </div>

@@ -1,6 +1,6 @@
-import { TOP_OF_LIST_POSITION } from "../constants/taskConstants";
-import type { Task } from "../types/Task";
-import type { TaskActions } from "../types/TaskActions";
+import { TOP_OF_LIST_POSITION } from "../../constants/taskConstants";
+import type { Task } from "../../types/Task";
+import type { TaskActions } from "../../types/TaskActions";
 
 export function taskReducer(state: Task[], action: TaskActions): Task[] {
   switch (action.type) {

@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import check from "../../assets/icons/icon-check.svg";
 import doneCheck from "../../assets/icons/icon-check-done.svg";
-import { useTaskContext } from "../../contexts/useTaskContext";
+import { useTaskContext } from "../../contexts/task/useTaskContext";
 import { EditableText } from "../EditableText";
 import { forwardRef } from "react";
 import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
