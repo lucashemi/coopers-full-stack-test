@@ -18,7 +18,7 @@ export function taskReducer(state: Task[], action: TaskActions): Task[] {
       return state.map((task) =>
         task.id === action.payload.id
           ? { ...task, done: !task.done, position: TOP_OF_LIST_POSITION }
-          : task
+          : { ...task, position: task.position + 1 }
       );
 
     case "EDIT_TASK":

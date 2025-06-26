@@ -5,6 +5,7 @@ import type { AxiosError } from "axios";
 
 export function useAuthHandler() {
   const [user, setUser] = useState<User | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,6 +23,7 @@ export function useAuthHandler() {
       // Get user after successful login
       const { data } = await api.get("/auth/me", { withCredentials: true });
       setUser(data);
+      setIsAuthenticated(true);
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
       const message = error?.response?.data?.message || "Erro ao fazer login";
@@ -39,6 +41,7 @@ export function useAuthHandler() {
     try {
       await api.post("/auth/logout", {}, { withCredentials: true });
       setUser(null);
+      setIsAuthenticated(false);
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
       const message = error?.response?.data?.message || "Erro ao fazer logout";
@@ -60,6 +63,7 @@ export function useAuthHandler() {
       );
       const { data } = await api.get("/auth/me", { withCredentials: true });
       setUser(data);
+      setIsAuthenticated(true);
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
       const message = error?.response?.data?.message || "Erro ao registrar";
@@ -74,8 +78,8 @@ export function useAuthHandler() {
     setLoading(true);
     try {
       const { data } = await api.get("/auth/me", { withCredentials: true });
-      console.log(data);
       setUser(data);
+      setIsAuthenticated(true);
     } catch {
       setUser(null);
     } finally {
@@ -83,5 +87,14 @@ export function useAuthHandler() {
     }
   };
 
-  return { user, loading, error, login, logout, register, fetchUser };
+  return {
+    user,
+    isAuthenticated,
+    loading,
+    error,
+    login,
+    logout,
+    register,
+    fetchUser,
+  };
 }

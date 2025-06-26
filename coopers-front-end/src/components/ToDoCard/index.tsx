@@ -1,5 +1,4 @@
 import styles from "./styles.module.css";
-import { useTaskContext } from "../../contexts/task/useTaskContext";
 import type { CardNames } from "../../types/CardNames";
 import { useRef } from "react";
 import {
@@ -8,6 +7,7 @@ import {
 } from "@dnd-kit/sortable";
 import { SortableTask } from "../SortableTask";
 import { DroppableColumn } from "../DroppableColumn";
+import { useTasksManager } from "../../hooks/useTasksManager";
 
 type ToDoCardProps = {
   title: CardNames;
@@ -26,10 +26,12 @@ export function ToDoCard({
     ? `${styles.card} ${styles.cardDone}`
     : styles.card;
 
-  const { tasks, dispatch } = useTaskContext();
+  const { tasks, addTask, deleteAllTasks } = useTasksManager();
   const addTaskRef = useRef<HTMLInputElement>(null);
 
-  const cardTasks = tasks.filter((t) => t.done === donePhase);
+  const cardTasks = tasks
+    ?.filter((t) => t.done === donePhase)
+    .sort((a, b) => a.position - b.position);
 
   function handleAddTask(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -37,16 +39,13 @@ export function ToDoCard({
     const value = addTaskRef.current?.value.trim();
     if (!value) return;
 
-    dispatch({ type: "ADD_TASK", payload: { name: value } });
+    addTask(value);
 
     addTaskRef.current!.value = "";
   }
 
   function handleEraseAll() {
-    dispatch({
-      type: "DELETE_ALL",
-      payload: { cardName: title },
-    });
+    deleteAllTasks(title);
   }
 
   return (

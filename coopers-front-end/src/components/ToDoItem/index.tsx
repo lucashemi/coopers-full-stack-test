@@ -1,10 +1,10 @@
 import styles from "./styles.module.css";
 import check from "../../assets/icons/icon-check.svg";
 import doneCheck from "../../assets/icons/icon-check-done.svg";
-import { useTaskContext } from "../../contexts/task/useTaskContext";
 import { EditableText } from "../EditableText";
 import { forwardRef } from "react";
 import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
+import { useTasksManager } from "../../hooks/useTasksManager";
 
 type ToDoItemProps = {
   id: number;
@@ -18,31 +18,22 @@ export const ToDoItem = forwardRef(function ToDoItem(
   { id, name, done = false, dragHandleProps, ...rest }: ToDoItemProps,
   ref: React.Ref<HTMLLIElement>
 ) {
-  const { dispatch } = useTaskContext();
+  const { toggleDone, editTask, deleteTask } = useTasksManager();
 
   const iconCircleStyle = done
     ? `${styles.iconCircle} ${styles.iconCircleDone}`
     : `${styles.iconCircle} ${styles.iconCircleTodo}`;
 
   function handleClickDone() {
-    dispatch({
-      type: "TOGGLE_DONE",
-      payload: { id },
-    });
+    toggleDone({ id, done });
   }
 
   function handleEdit(newValue: string) {
-    dispatch({
-      type: "EDIT_TASK",
-      payload: { id, name: newValue },
-    });
+    editTask({ id, name: newValue });
   }
 
   function handleClickDelete() {
-    dispatch({
-      type: "DELETE_TASK",
-      payload: { id },
-    });
+    deleteTask(id);
   }
 
   return (

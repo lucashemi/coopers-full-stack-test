@@ -1,14 +1,14 @@
 import { ToDoCard } from "../ToDoCard";
 
 import styles from "./styles.module.css";
-import { useTaskContext } from "../../contexts/task/useTaskContext";
 import { useDndSortable } from "../../hooks/useDndSortable";
 import type { Task } from "../../types/Task";
+import { useTasksManager } from "../../hooks/useTasksManager";
 
 export function ToDoContent() {
-  const { tasks, dispatch } = useTaskContext();
+  const { tasks, reorderTasks } = useTasksManager();
 
-  const doneCount = tasks.filter((t) => t.done).length;
+  const doneCount = tasks?.filter((t) => t.done).length;
   const taskSummary = (
     <strong>
       You have done {doneCount} task{doneCount !== 1 ? "s" : ""}
@@ -16,10 +16,7 @@ export function ToDoContent() {
   );
 
   const onReorder = (newOrder: Task[]) => {
-    dispatch({
-      type: "SET_TASKS",
-      payload: { tasks: newOrder },
-    });
+    reorderTasks(newOrder);
   };
 
   const { DndWrapper } = useDndSortable({ tasks, onReorder });
