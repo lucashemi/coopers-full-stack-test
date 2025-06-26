@@ -9,7 +9,7 @@ import {
 import { arrayMove } from "@dnd-kit/sortable";
 import React from "react";
 import type { Task } from "../types/Task";
-import type { CardNames } from "../types/CardNames";
+import type { ColumnName } from "../types/ColumnName";
 import { TOP_OF_LIST_POSITION } from "../constants/taskConstants";
 
 interface UseDndSortableParams {
@@ -38,7 +38,7 @@ export function useDndSortable({ tasks, onReorder }: UseDndSortableParams) {
         // Get active and over data
         const activeTask = active.data.current?.task as Task | undefined;
         const overTask = over.data.current?.task as Task | undefined;
-        const overColumn = over.data.current?.column as CardNames | undefined;
+        const overColumn = over.data.current?.column as ColumnName | undefined;
 
         if (!activeTask) return;
 

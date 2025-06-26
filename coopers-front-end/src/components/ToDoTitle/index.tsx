@@ -2,14 +2,16 @@ import styles from "./styles.module.css";
 
 export function ToDoTitle() {
   return (
-    <section id="Todo-list-title" className={styles.container}>
+    <header className={styles.container}>
       <div className={styles.background}>
-        <h1 className={styles.title}>To-do list</h1>
-        <p className={styles.description}>
+        <h2 className={styles.title} id="Todo-list-title">
+          To-do list
+        </h2>
+        <p className={styles.description} id="todo-description">
           Drag and drop to set your main priorities, check when done and create
           what's new.
         </p>
       </div>
-    </section>
+    </header>
   );
 }

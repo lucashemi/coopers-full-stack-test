@@ -32,9 +32,9 @@ export function taskReducer(state: Task[], action: TaskActions): Task[] {
       return state.filter((task) => task.id !== action.payload.id);
 
     case "DELETE_ALL": {
-      const { cardName } = action.payload;
+      const { columnName } = action.payload;
 
-      switch (cardName) {
+      switch (columnName) {
         case "To-do":
           return state.filter((task) => task.done);
         case "Done":

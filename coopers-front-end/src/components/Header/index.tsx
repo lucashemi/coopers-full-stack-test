@@ -11,14 +11,17 @@ export function Header({ handleOpenModal }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        <img src={coopersLogo} alt="Logo da Coopers" />
+        <img src={coopersLogo} alt="Coopers" />
       </div>
       {user?.name ? (
-        <span>
-          <button onClick={logout}>sign out ({user.name})</button>
-        </span>
+        <button onClick={logout}>sign out ({user.name})</button>
       ) : (
-        <button onClick={handleOpenModal}>entrar</button>
+        <button
+          onClick={handleOpenModal}
+          aria-label="Sign in to access your list"
+        >
+          sign in
+        </button>
       )}
     </header>
   );

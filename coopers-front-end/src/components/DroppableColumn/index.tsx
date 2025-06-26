@@ -1,10 +1,11 @@
 import { useDroppable } from "@dnd-kit/core";
+import type { ColumnName } from "../../types/ColumnName";
 
 export function DroppableColumn({
   id,
   children,
 }: {
-  id: string;
+  id: ColumnName;
   children: React.ReactNode;
 }) {
   const { setNodeRef } = useDroppable({

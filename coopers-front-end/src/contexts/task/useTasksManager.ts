@@ -1,18 +1,18 @@
-import type { Task } from "../types/Task";
+import type { Task } from "../../types/Task";
 import {
   useAddTaskApi,
-  useToggleDoneApi,
+  useToggleDoneTaskApi,
   useDeleteTaskApi,
   useTasksApi,
-  useDeleteAllApi,
+  useDeleteAllTasksApi,
   useEditTaskApi,
   useReorderTasksApi,
-} from "./useTasksApi";
-import { useTaskContext } from "../contexts/task/useTaskContext";
-import { useAuth } from "../contexts/auth/useAuthContext";
+} from "./api";
+import { useTaskContext } from "../../contexts/task/useTaskContext";
+import { useAuth } from "../../contexts/auth/useAuthContext";
 import { useEffect, useState } from "react";
-import { defaultTasks } from "../constants/defaultTasks";
-import type { CardNames } from "../types/CardNames";
+import { defaultTasks } from "../../constants/defaultTasks";
+import type { ColumnName } from "../../types/ColumnName";
 
 type UseTasksManagerReturn = {
   tasks: Task[];
@@ -20,7 +20,7 @@ type UseTasksManagerReturn = {
   toggleDone: (task: { id: number; done: boolean }) => void;
   editTask: (task: { id: number; name: string }) => void;
   deleteTask: (id: number) => void;
-  deleteAllTasks: (cardName: CardNames) => void;
+  deleteAllTasks: (columnName: ColumnName) => void;
   reorderTasks: (tasks: Task[]) => void;
 };
 
@@ -33,10 +33,10 @@ export function useTasksManager(): UseTasksManagerReturn {
   // API state and functions
   const { data: apiTasks } = useTasksApi();
   const addTaskMutation = useAddTaskApi();
-  const toggleDoneMutation = useToggleDoneApi();
+  const toggleDoneMutation = useToggleDoneTaskApi();
   const editTaskMutation = useEditTaskApi();
   const deleteTaskMutation = useDeleteTaskApi();
-  const deleteAllTasksMutation = useDeleteAllApi();
+  const deleteAllTasksMutation = useDeleteAllTasksApi();
   const reorderTasksMutation = useReorderTasksApi();
 
   const [hasLoggedOut, setHasLoggedOut] = useState(true);
@@ -69,8 +69,8 @@ export function useTasksManager(): UseTasksManagerReturn {
     dispatch({ type: "DELETE_TASK", payload: { id } });
   }
 
-  function deleteAllTasksLocal(cardName: CardNames) {
-    dispatch({ type: "DELETE_ALL", payload: { cardName } });
+  function deleteAllTasksLocal(columnName: ColumnName) {
+    dispatch({ type: "DELETE_ALL", payload: { columnName } });
   }
 
   function reorderTasksLocal(newOrder: Task[]) {
@@ -93,7 +93,7 @@ export function useTasksManager(): UseTasksManagerReturn {
       ? (id) => deleteTaskMutation.mutate(id)
       : deleteTaskLocal,
     deleteAllTasks: isAuthenticated
-      ? (cardName) => deleteAllTasksMutation.mutate(cardName)
+      ? (columnName) => deleteAllTasksMutation.mutate(columnName)
       : deleteAllTasksLocal,
     reorderTasks: isAuthenticated
       ? (newOrder) => reorderTasksMutation.mutate(newOrder)

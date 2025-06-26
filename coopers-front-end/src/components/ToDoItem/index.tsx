@@ -4,7 +4,7 @@ import doneCheck from "../../assets/icons/icon-check-done.svg";
 import { EditableText } from "../EditableText";
 import { forwardRef } from "react";
 import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
-import { useTasksManager } from "../../hooks/useTasksManager";
+import { useTasksManager } from "../../contexts/task/useTasksManager";
 
 type ToDoItemProps = {
   id: number;
@@ -42,11 +42,24 @@ export const ToDoItem = forwardRef(function ToDoItem(
         <button
           {...dragHandleProps}
           className={styles.dragHandle}
-          role="button"
+          aria-label="Drag task"
+          title="Drag task"
         >
           ≡
         </button>
-        <span onClick={handleClickDone} className={iconCircleStyle}>
+        <span
+          onClick={handleClickDone}
+          className={iconCircleStyle}
+          title="Mark as done"
+          role="button"
+          aria-pressed={done}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              handleClickDone();
+            }
+          }}
+        >
           {!done ? (
             <img src={check} alt="Check" className={styles.check} />
           ) : (
@@ -56,11 +69,16 @@ export const ToDoItem = forwardRef(function ToDoItem(
         <EditableText
           initialValue={name}
           onConfirm={handleEdit}
-          inputClassName={styles.editing}
+          inputClassName={`${styles.editing} ${done ? styles.editingDone : ""}`}
           autoFocus
         />
       </div>
-      <button onClick={handleClickDelete} className={styles.deleteButton}>
+      <button
+        onClick={handleClickDelete}
+        className={styles.deleteButton}
+        aria-label="Delete task"
+        title="Delete task"
+      >
         delete
       </button>
     </li>

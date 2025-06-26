@@ -5,7 +5,7 @@ interface EditableTextProps {
   onConfirm: (newValue: string) => void;
   className?: string;
   inputClassName?: string;
-  autoFocus?: boolean; // ativa foco ao entrar em modo edição
+  autoFocus?: boolean; // activate input focus (can cause autoscroll issues with drag-and-drop)
 }
 
 export function EditableText({
@@ -66,7 +66,17 @@ export function EditableText({
     />
   ) : (
     <span
+      role="button"
+      title="Click to edit"
       className={className}
+      aria-pressed={editing}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          setEditing(true);
+          setTempValue(value);
+        }
+      }}
       onClick={() => {
         setEditing(true);
         setTempValue(value);

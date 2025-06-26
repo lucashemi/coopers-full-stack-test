@@ -48,9 +48,13 @@
 }
 
 .editing {
-  color: var(--table-editing);
   border: none;
   width: 100%;
+  color: var(--table-editing);
+}
+
+.editingDone {
+  color: var(--primary);
 }
 
 .deleteButton {
@@ -65,7 +69,9 @@
   transition: 0.2 ease;
 }
 
-.item:hover .deleteButton {
+.item:hover .deleteButton,
+.deleteButton:focus,
+.deleteButton:hover {
   opacity: 1;
 }
 

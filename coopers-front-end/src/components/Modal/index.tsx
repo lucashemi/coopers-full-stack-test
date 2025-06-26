@@ -29,13 +29,14 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className={styles.modalOverlay} onClick={onClose} aria-hidden="true">
+    <div className={styles.modalOverlay} onClick={onClose}>
       <div
         className={styles.modalContent}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalDescription"
       >
         <button className={styles.modalClose} onClick={onClose}>
           close

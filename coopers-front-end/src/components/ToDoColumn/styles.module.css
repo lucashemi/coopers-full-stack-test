@@ -1,4 +1,4 @@
-.card {
+.column {
   border-top: 20px solid var(--orange-table);
   box-shadow: var(--box-shadow-lg);
   padding: var(--space-md); /* figma 23px */
@@ -6,7 +6,7 @@
   max-height: fit-content;
 }
 
-.cardDone {
+.columnDone {
   border-color: var(--primary);
 }
 
@@ -60,7 +60,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .card {
+  .column {
     max-width: 380px;
   }
 
