@@ -79,7 +79,7 @@ export function useAuthHandler() {
     try {
       const { data } = await api.get("/auth/me", { withCredentials: true });
       setUser(data);
-      setIsAuthenticated(true);
+      if (!isAuthenticated) setIsAuthenticated(true);
     } catch {
       setUser(null);
     } finally {

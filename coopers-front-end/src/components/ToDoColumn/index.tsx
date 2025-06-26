@@ -49,7 +49,7 @@ export function ToDoColumn({
   return (
     <section className={columnStyle}>
       <header>
-        <h3 className={styles.title}>{title}</h3>
+        <h2 className={styles.title}>{title}</h2>
         <p className={styles.description}>
           {description} <span>{taskSummary}</span>
         </p>

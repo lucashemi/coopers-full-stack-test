@@ -14,7 +14,7 @@ export function Header({ handleOpenModal }: HeaderProps) {
         <img src={coopersLogo} alt="Coopers" />
       </div>
       {user?.name ? (
-        <button onClick={logout}>sign out ({user.name})</button>
+        <button onClick={logout}>sign out</button>
       ) : (
         <button
           onClick={handleOpenModal}

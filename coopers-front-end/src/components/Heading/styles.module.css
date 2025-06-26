@@ -11,6 +11,16 @@
   display: block;
 }
 
+.hero {
+  font-size: var(--font-size-xxxl);
+  line-height: var(--line-height-xxs);
+}
+
+.hero span {
+  font-size: var(--font-size-xxl);
+  line-height: 32px;
+}
+
 @media screen and (min-width: 1024px) {
   .title {
     font-weight: var(--font-weight-extra-bold);
