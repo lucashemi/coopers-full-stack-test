@@ -43,12 +43,8 @@ export function useAddTaskApi() {
         queryClient.setQueryData(["tasks"], context.previousTasks);
       }
     },
-    onSuccess: (createdTask) => {
-      queryClient.setQueryData<Task[]>(["tasks"], (old) =>
-        old
-          ? [createdTask, ...old.filter((t) => t.id !== createdTask.id)]
-          : [createdTask]
-      );
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
     },
   });
 }

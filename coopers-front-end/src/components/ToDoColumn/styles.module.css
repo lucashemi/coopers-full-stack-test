@@ -3,7 +3,7 @@
   box-shadow: var(--box-shadow-lg);
   padding: var(--space-md); /* figma 23px */
   width: 100%;
-  max-height: fit-content;
+  height: fit-content;
 }
 
 .columnDone {
