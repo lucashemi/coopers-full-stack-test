@@ -69,24 +69,8 @@
   transition: 0.2 ease;
 }
 
-.item:hover .deleteButton,
-.deleteButton:focus,
-.deleteButton:hover {
+.item .deleteButton {
   opacity: 1;
-}
-
-/* Mostrar no hover em desktop */
-@media (hover: hover) and (pointer: fine) {
-  .item:hover .deleteButton {
-    opacity: 1;
-  }
-}
-
-/* Mostrar sempre no mobile */
-@media (hover: none) and (pointer: coarse) {
-  .deleteButton {
-    opacity: 1;
-  }
 }
 
 .dragHandle {
@@ -95,4 +79,14 @@
   border: none;
   font-size: 20px;
   padding: 0 0.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .item .deleteButton {
+    opacity: 0;
+  }
+
+  .item:hover .deleteButton {
+    opacity: 1;
+  }
 }

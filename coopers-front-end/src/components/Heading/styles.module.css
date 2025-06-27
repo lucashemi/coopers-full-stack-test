@@ -12,27 +12,23 @@
 }
 
 .hero {
-  font-size: var(--font-size-xxxl);
+  font-size: 4rem;
   line-height: var(--line-height-xxs);
 }
 
 .hero span {
-  font-size: var(--font-size-xxl);
+  font-size: 2.75rem;
   line-height: 32px;
 }
 
 @media screen and (min-width: 1024px) {
   .title {
-    font-weight: var(--font-weight-extra-bold);
     font-size: var(--font-size-xxxl);
     margin: initial;
   }
 
   .title span {
-    font-weight: var(--font-weight-regular);
     font-size: var(--font-size-xxl);
-    color: var(--primary);
-    display: block;
   }
 
   .hero {
