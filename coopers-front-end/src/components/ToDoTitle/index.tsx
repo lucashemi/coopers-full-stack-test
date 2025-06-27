@@ -3,7 +3,8 @@ import styles from "./styles.module.css";
 export function ToDoTitle() {
   return (
     <header className={styles.container}>
-      <div className={styles.background}>
+      <div className={styles.background}></div>
+      <div>
         <h2 className={styles.title} id="Todo-list-title">
           To-do list
         </h2>

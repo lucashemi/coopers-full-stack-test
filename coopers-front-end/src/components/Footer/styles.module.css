@@ -1,0 +1,60 @@
+.container {
+  margin-top: 38px;
+  height: 246px;
+}
+
+.background {
+  background: url("../../assets/graphics/footer-bg.svg") center right no-repeat;
+  z-index: var(--z-index-bg-2);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  max-height: 246px;
+}
+
+.content {
+  padding-top: 73px;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xxxs);
+  margin: 0;
+}
+
+.email {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  line-height: 0.6;
+  margin-top: 28px;
+  margin-bottom: 18px;
+}
+
+.copy {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-xxs);
+  margin: 0;
+}
+
+.graphism {
+  background: url("../../assets/graphics/rectangle-bg-green.svg") center
+    no-repeat;
+  z-index: var(--z-index-bg-2);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 41px;
+  overflow: hidden;
+  margin-top: var(--space-lg);
+}

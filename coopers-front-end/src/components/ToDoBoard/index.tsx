@@ -16,6 +16,7 @@ export function ToDoBoard() {
 
   return (
     <div>
+      <div className={styles.background}></div>
       <DndWrapper>
         <div className={styles.cardContainer}>
           <ToDoColumn

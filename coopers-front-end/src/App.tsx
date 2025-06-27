@@ -5,6 +5,7 @@ import { Hero } from "./components/Hero";
 import { AuthForm } from "./components/AuthForm";
 import type { AuthMode } from "./types/AuthMode";
 import { ToDo } from "./components/ToDo";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [authMode, setAuthMode] = useState<AuthMode | null>(null);
@@ -29,7 +30,7 @@ function App() {
         {/* TODO: <Posts /> */}
         {/* TODO: <Contact /> */}
       </main>
-      {/* TODO: <Footer /> */}
+      <Footer />
     </div>
   );
 }
