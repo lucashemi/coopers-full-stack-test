@@ -5,17 +5,24 @@ import { EditableText } from "../EditableText";
 import { forwardRef } from "react";
 import type { SyntheticListenerMap } from "@dnd-kit/core/dist/hooks/utilities";
 import { useTasksManager } from "../../contexts/task/useTasksManager";
+import type { DraggableAttributes } from "@dnd-kit/core";
 
 type ToDoItemProps = {
   id: number;
   name: string;
   done?: boolean;
-  dragHandleProps: SyntheticListenerMap | undefined;
-  style: React.CSSProperties;
+  dragHandleProps: SyntheticListenerMap | undefined | DraggableAttributes;
+  transformationStyle: React.CSSProperties;
 };
 
 export const ToDoItem = forwardRef(function ToDoItem(
-  { id, name, done = false, dragHandleProps, ...rest }: ToDoItemProps,
+  {
+    id,
+    name,
+    done = false,
+    dragHandleProps,
+    transformationStyle,
+  }: ToDoItemProps,
   ref: React.Ref<HTMLLIElement>
 ) {
   const { toggleDone, editTask, deleteTask } = useTasksManager();
@@ -37,7 +44,7 @@ export const ToDoItem = forwardRef(function ToDoItem(
   }
 
   return (
-    <li ref={ref} className={styles.item} {...rest}>
+    <li ref={ref} className={styles.item} style={transformationStyle}>
       <div className={styles.itemContent}>
         <button
           {...dragHandleProps}

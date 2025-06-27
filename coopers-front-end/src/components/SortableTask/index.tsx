@@ -22,9 +22,8 @@ export function SortableTask({ task }: SortableTaskProps) {
       id={task.id}
       name={task.name}
       done={task.done}
-      dragHandleProps={listeners}
-      {...attributes}
-      style={{
+      dragHandleProps={{ ...listeners, ...attributes }}
+      transformationStyle={{
         transform: CSS.Transform.toString(transform),
         transition,
       }}

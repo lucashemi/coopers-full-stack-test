@@ -18,13 +18,7 @@ interface UseDndSortableParams {
 }
 
 export function useDndSortable({ tasks, onReorder }: UseDndSortableParams) {
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 5, // arrasta só depois de mover um pouco
-      },
-    })
-  );
+  const sensors = useSensors(useSensor(PointerSensor));
 
   const toDoTasks = tasks.filter((t) => !t.done);
   const doneTasks = tasks.filter((t) => t.done);
