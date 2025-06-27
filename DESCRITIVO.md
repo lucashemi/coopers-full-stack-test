@@ -157,3 +157,17 @@ Este projeto consolidou para mim a importância de:
 - Integração completa entre front-end e back-end com segurança e estado sincronizado.
 
 Apesar dos desafios enfrentados e pontos que ainda posso melhorar (aprofundamento em algumas bibliotecas e organização), considero que o projeto atinge seus objetivos e mostra meu comprometimento com entregas funcionais, organizadas e com qualidade de código.
+
+## Informações adicionais do Projeto
+
+- 📅 Início: 22 de junho de 2025
+- ✅ Conclusão: 27 de junho de 2025
+- ⏱️ Tempo estimado de desenvolvimento: 75 horas em 6 dias
+
+Com foco em:
+
+- Boas práticas de acessibilidade e semântica HTML
+- Mobile first e design responsivo
+- Autenticação JWT com cookies HTTP-only (backend Express + frontend React/Vite)
+- Integração com backend (todo list sincronizado)
+- Estrutura de código organizada e reutilizável
