@@ -26,7 +26,7 @@ export function useAuthHandler() {
       setIsAuthenticated(true);
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
-      const message = error?.response?.data?.message || "Erro ao fazer login";
+      const message = error?.response?.data?.message || "Error logging in";
       setError(message);
       throw new Error(message);
     } finally {
@@ -44,7 +44,7 @@ export function useAuthHandler() {
       setIsAuthenticated(false);
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
-      const message = error?.response?.data?.message || "Erro ao fazer logout";
+      const message = error?.response?.data?.message || "Error logging out";
       setError(message);
     } finally {
       setLoading(false);
@@ -66,7 +66,8 @@ export function useAuthHandler() {
       setIsAuthenticated(true);
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
-      const message = error?.response?.data?.message || "Erro ao registrar";
+      const message =
+        error?.response?.data?.message || "Error registering account";
       setError(message);
       throw new Error(message);
     } finally {
