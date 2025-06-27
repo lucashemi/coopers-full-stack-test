@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# Frontend - To-Do List Full Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o cliente React da aplicação, responsável pela interface do usuário.
 
-Currently, two official plugins are available:
+## Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- CSS Modules
+- dnd-kit (drag-and-drop)
+- TanStack Query, Axios para comunicação com API
 
-## Expanding the ESLint configuration
+## Pré-requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (v16+ recomendado)
+- npm ou yarn
+- Backend rodando na porta 3000 (ou ajuste o arquivo de configuração)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Configuração
+
+1. Clone o repositório e entre na pasta frontend:
+
+```bash
+cd coopers-front-end
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Instale as dependências:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm i
 ```
+
+3. Copie e configure, `.env.example` com a rota da api
+
+## Rodando a aplicação
+
+```bash
+npm run dev
+```
+
+O app abrirá automaticamente no navegador em `http://localhost:5173`.
+
+## Funcionalidades
+
+- Cadastro, login
+- Gerenciamento de tarefas com drag-and-drop
+- Interface responsiva e acessível
+
+## Observações
+
+- O backend precisa estar rodando para que a aplicação funcione corretamente.
