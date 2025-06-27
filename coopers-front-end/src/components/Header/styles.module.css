@@ -17,6 +17,11 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-xxs);
   padding: 0.5rem 2rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.header button:hover {
+  opacity: 0.9;
 }
 
 @media screen and (min-width: 1024px) {

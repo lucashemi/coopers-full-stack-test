@@ -63,6 +63,11 @@
   padding: 1rem 2.5rem;
   width: 100%;
   margin-top: var(--space-sm);
+  transition: all 0.1s ease-in-out;
+}
+
+.button:hover {
+  filter: brightness(0.9);
 }
 
 @media screen and (min-width: 1024px) {

@@ -57,6 +57,11 @@
   border-radius: var(--border-radius-lg);
   padding: 1rem 2rem;
   width: 100%; /* figma 300px width e 64px height */
+  transition: all 0.1s ease-in-out;
+}
+
+.eraseAllButton:hover {
+  opacity: 0.9;
 }
 
 @media screen and (min-width: 1024px) {
