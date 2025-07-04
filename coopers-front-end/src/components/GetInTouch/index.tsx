@@ -1,14 +1,42 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import tatiana from "../../assets/images/tatiana.png";
 import iconEmail from "../../assets/icons/icon-mail.svg";
 
 import styles from "./styles.module.css";
+import { useGetInTouch } from "../../hooks/useGetInTouch";
 
 export function GetInTouch() {
+  const { sendForm, loading } = useGetInTouch();
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const telephoneRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  const [localError, setLocalError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const name = nameRef.current?.value.trim() ?? "";
+    const email = emailRef.current?.value.trim();
+    const telephone = telephoneRef.current?.value.trim();
+    const message = messageRef.current?.value.trim();
+
+    if (!email || !telephone || !message) {
+      setLocalError("Please fill in all required fields.");
+      return;
+    }
+
+    setLocalError(null);
+
+    try {
+      await sendForm(name, email, telephone, message);
+      alert("Message sent with success!");
+    } catch {
+      return;
+    }
+  }
+
   return (
     <section className={styles.container}>
       <div className={styles.avatar}>
@@ -22,7 +50,7 @@ export function GetInTouch() {
             get in <span>touch</span>
           </h3>
         </div>
-        <form action="" className={styles.form}>
+        <form action="" onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formRow}>
             <label htmlFor="name">Your name</label>
             <input
@@ -61,8 +89,9 @@ export function GetInTouch() {
               className={styles.message}
             />
           </div>
+          {localError && <span className={styles.error}>{localError}</span>}
           <button type="submit" className={styles.button}>
-            Send now
+            {loading ? "Sending..." : "Send now"}
           </button>
         </form>
       </div>

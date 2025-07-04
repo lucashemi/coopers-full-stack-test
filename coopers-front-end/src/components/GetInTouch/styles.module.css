@@ -80,8 +80,20 @@
   resize: none;
 }
 
+.error {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 16px;
+  color: var(--error);
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-xxs);
+}
+
 .button {
-  margin-top: 40px;
+  margin-top: calc(40px - 16px);
   width: 100%;
   font-family: var(--font-montserrat);
   font-weight: var(--font-weight-extra-bold);
