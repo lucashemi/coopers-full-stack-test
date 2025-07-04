@@ -6,6 +6,7 @@ import { AuthForm } from "./components/AuthForm";
 import type { AuthMode } from "./types/AuthMode";
 import { ToDo } from "./components/ToDo";
 import { Footer } from "./components/Footer";
+import { GoodThings } from "./components/GoodThings";
 
 function App() {
   const [authMode, setAuthMode] = useState<AuthMode | null>(null);
@@ -27,7 +28,7 @@ function App() {
       <main>
         <Hero />
         <ToDo />
-        {/* TODO: <Posts /> */}
+        <GoodThings />
         {/* TODO: <Contact /> */}
       </main>
       <Footer />

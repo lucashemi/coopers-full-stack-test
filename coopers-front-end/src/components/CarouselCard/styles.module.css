@@ -1,0 +1,64 @@
+.card {
+  background-color: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow-sm);
+  max-width: 360px;
+  max-height: 430px;
+}
+
+.cardImageContainer img {
+  border-radius: 16px 16px 0 0;
+}
+
+.cardIcon {
+  background: url("../../assets/logos/carrousel-card-logo.svg") center no-repeat;
+  z-index: var(--z-index-high);
+  position: absolute;
+  width: 49px;
+  height: 56px;
+  bottom: calc(224px - (56px / 2));
+  right: 1.25rem;
+}
+
+.cardContent {
+  padding: 1.5rem 2rem;
+}
+
+.cardTag {
+  border: 1px solid #9499b3;
+  color: #9499b3;
+  border-radius: 16px;
+  padding: 6px 12px;
+  max-width: 86px;
+  max-height: 31px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-xs);
+}
+
+.cardTitle {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-xs);
+  color: #312f4f;
+  letter-spacing: 0%;
+  margin-top: 16px;
+  margin-bottom: 0;
+  height: 7rem;
+}
+
+.cardButton {
+  padding: 0;
+  color: var(--primary);
+  background-color: transparent;
+  font-weight: var(--font-weight-extra-bold);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 1440px) {
+  .cardIcon {
+    right: calc(1.25rem + 28.33px);
+  }
+}

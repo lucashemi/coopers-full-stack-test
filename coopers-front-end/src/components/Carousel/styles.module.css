@@ -1,0 +1,58 @@
+.swiperContainer {
+  width: 100%;
+  height: 100%;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  max-width: 1230px;
+  max-height: 532px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding-top: 32px;
+  padding-bottom: 16px;
+  max-height: 532px;
+}
+
+.swiperPagination {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 32px;
+}
+
+.swiperBullet {
+  display: inline-block;
+  background-color: gray;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.swiperBulletActive {
+  background-color: var(--primary);
+}
+
+@media screen and (min-width: 768px) {
+  .swiperPagination {
+    padding-top: 48px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .swiper {
+    padding-top: 40px;
+    padding-bottom: 32px;
+  }
+
+  .swiperPagination {
+    padding-top: 0;
+    padding-right: 108px;
+  }
+}
