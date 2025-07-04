@@ -93,7 +93,7 @@
 }
 
 .button {
-  margin-top: calc(40px - 16px);
+  margin-top: 40px;
   width: 100%;
   font-family: var(--font-montserrat);
   font-weight: var(--font-weight-extra-bold);
