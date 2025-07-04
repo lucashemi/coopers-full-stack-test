@@ -1,0 +1,135 @@
+.container {
+  box-shadow: 0px 8px 16px 0px #06152b14;
+  border-radius: var(--border-radius-sm);
+  margin: 64px auto 0 auto;
+  padding: 2rem;
+  max-width: 700px;
+}
+
+.avatar {
+  display: none;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.titleContainer img {
+  width: 60px;
+  height: 60px;
+}
+
+.title {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xxs);
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  margin: 0;
+  color: #06152b;
+}
+
+.title span {
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-extra-bold);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xxs);
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  display: block;
+  color: #06152b;
+}
+
+.form {
+  margin-top: 40px;
+}
+
+.formRow {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+.formRow label {
+  color: #06152b;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-xxs);
+}
+
+.formRow input,
+.message {
+  border: 1px solid #06152b;
+  border-radius: var(--border-radius-sm);
+  color: #06152b;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-xxs);
+  padding: 14px 1rem;
+}
+
+.message {
+  height: 150px;
+  resize: none;
+}
+
+.button {
+  margin-top: 40px;
+  width: 100%;
+  font-family: var(--font-montserrat);
+  font-weight: var(--font-weight-extra-bold);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-xxs);
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  padding: 18px 0;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: var(--border-radius-sm);
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    margin: 185px auto 0 auto;
+    position: relative;
+    padding: 87px 60px 60px 60px;
+  }
+
+  .avatar {
+    display: block;
+    width: 191px;
+    height: 191px;
+    margin: 0 auto;
+    position: absolute;
+    top: -99px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .graphism {
+    background: url("../../assets/graphics/tatiana-grafismo.svg") center
+      no-repeat;
+    z-index: var(--z-index-bg-2);
+    position: absolute;
+    top: 86px;
+    left: -60px;
+    width: 166px;
+    height: 23px;
+  }
+
+  .avatar img {
+    border-radius: 50%;
+  }
+
+  .formRowDouble {
+    display: flex;
+    gap: 20px;
+  }
+}

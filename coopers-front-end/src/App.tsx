@@ -7,6 +7,7 @@ import type { AuthMode } from "./types/AuthMode";
 import { ToDo } from "./components/ToDo";
 import { Footer } from "./components/Footer";
 import { GoodThings } from "./components/GoodThings";
+import { GetInTouch } from "./components/GetInTouch";
 
 function App() {
   const [authMode, setAuthMode] = useState<AuthMode | null>(null);
@@ -29,7 +30,7 @@ function App() {
         <Hero />
         <ToDo />
         <GoodThings />
-        {/* TODO: <Contact /> */}
+        <GetInTouch />
       </main>
       <Footer />
     </div>
