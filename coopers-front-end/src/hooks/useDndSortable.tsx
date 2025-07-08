@@ -95,6 +95,7 @@ export function useDndSortable({ tasks, onReorder }: UseDndSortableParams) {
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
+          autoScroll={false}
         >
           {children}
         </DndContext>
