@@ -61,7 +61,7 @@ export function useDndSortable({ tasks, onReorder }: UseDndSortableParams) {
           );
 
           onReorder([...reorderedList, ...otherList]);
-        } else if (targetColumn) {
+        } else if (targetColumn && !isSameColumn) {
           // Toggle done and reorder lists
           const fromList = sourceColumn === "Done" ? doneTasks : toDoTasks;
           const toList = targetColumn === "Done" ? doneTasks : toDoTasks;
