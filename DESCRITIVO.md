@@ -171,3 +171,7 @@ Com foco em:
 - Autenticação JWT com cookies HTTP-only (backend Express + frontend React/Vite)
 - Integração com backend (todo list sincronizado)
 - Estrutura de código organizada e reutilizável
+
+## Atualizações após o teste
+
+Depois do teste corrigi os 2 bugs do dnd-kit, travei o scroll quando estiver arrastando e arrumei uma condição da função para não dropar o item na mesma coluna, apenas reordenar. Além disso, terminei as duas seções do carrossel e do formulário de e-mail que já estão funcionando.
